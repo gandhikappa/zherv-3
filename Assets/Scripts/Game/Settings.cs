@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using JetBrains.Annotations;
-using UnityEditor.PackageManager;
+// using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.InputSystem;
@@ -122,7 +122,15 @@ public class Settings : MonoBehaviour
      *   can call through to the AddPlayer and RemovePlayer respectively.
      *   Do not forget to set the Joining Behavior and the Player Prefab!
      */
-    
+    private void OnPlayerJoined(PlayerInput playerInput)
+    {
+        AddPlayer(playerInput.gameObject);
+    }
+    private void OnPlayerLeft(PlayerInput playerInput)
+    {
+        RemovePlayer(playerInput.gameObject);
+
+    }
     /// <summary>
     /// Called when the script instance is first loaded.
     /// </summary>
